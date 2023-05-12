@@ -18,7 +18,7 @@ app.use("/students", studentRoutes);
 app.use("/internships", internshipRoutes);
 
 app.use((requete, reponse, next) => {
-  return next(new HttpError("Route non trouvée", 404));
+  return next(new HttpError("Route not found", 404));
 });
 
 app.use((error, requete, reponse, next) => {
@@ -27,7 +27,7 @@ app.use((error, requete, reponse, next) => {
   }
   reponse.status(error.code || 500);
   reponse.json({
-    message: error.message || "Une erreur inconnue est survenue",
+    message: error.message || "An unknown error occured",
   });
 });
 
@@ -37,7 +37,7 @@ mongoose
 .connect("mongodb://127.0.0.1:27017/internshipsdb")
 .then(() => {
     app.listen(5000)
-    console.log("Connexion à la base de données réussie");
+    console.log("Succesfuly connected to the data base");
 })
 .catch(erreur => {
     console.log(erreur);
