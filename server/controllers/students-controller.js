@@ -71,7 +71,7 @@ async function addStudentToInternship(req, res, next) {
     await addInternshipToStudentEntry(studentId, internshipId);
     res
       .status(201)
-      .json({ message: "Student was succesfuly registered to internship" });
+      .json({ message: "Student was successfully registered to internship" });
   } catch (err) {
     console.log(err);
     return next(
@@ -90,7 +90,7 @@ async function deleteStudent(req, res, next) {
     }
     await Student.deleteOne({ _id: studentId });
     await removeStudentFromInternshipsEntries(studentId);
-    res.status(200).json({ message: "Student was succesfuly deleted and removed from internships entries" });
+    res.status(200).json({ message: "Student was successfully deleted and removed from internships entries" });
   } catch (err) {
     console.log(err);
     return next(new HttpError("Error while trying to delete student", 500));

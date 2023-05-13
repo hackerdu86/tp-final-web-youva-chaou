@@ -80,7 +80,7 @@ async function deleteInternship(req, res, next) {
     }
     await Internship.deleteOne({ _id: internshipId });
     await removeInternshipFromStudentsEntries(internshipId);
-    res.status(200).json({ message: "Intership was succesfuly deleted and removed from all students entries" });
+    res.status(200).json({ message: "Intership was successfully deleted and removed from all students entries" });
   } catch (err) {
     console.log(err);
     return next(new HttpError("Error while trying to delete internship", 500));
