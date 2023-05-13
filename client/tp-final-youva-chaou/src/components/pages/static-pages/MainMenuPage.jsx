@@ -1,4 +1,4 @@
-function MenuPage() {
+function MainMenuPage() {
   return (
     <div>
     <h1>Ça va bien papa?</h1>
@@ -8,4 +8,4 @@ function MenuPage() {
   );
 }
 
-export default MenuPage;
+export default MainMenuPage;

@@ -10,7 +10,7 @@ return (
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-md-3 item">
-                        <h3>Contact du coordonateur</h3>
+                        <h3>Contact du coordonateur des stages</h3>
                         <ul>
                             <li>Sylvain Lebranche</li>
                             <li><a href="mailto:sylvain.labranche@cmontmorency.qc.ca">sylvain.labranche@cmontmorency.qc.ca</a></li>

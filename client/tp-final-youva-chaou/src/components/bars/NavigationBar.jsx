@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -13,9 +14,9 @@ function NavigationBar() {
           src={require("../../images/montmorency-small-logo.png")}
           style={{ width: "2rem", height: "2rem", paddingRight: "5px" }}
         />
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           Collège Montmorency
-        </a>
+        </Link>
 
         <button
           className="navbar-toggler"
@@ -34,7 +35,6 @@ function NavigationBar() {
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
-                href="#"
                 id="navbarDropdownMenuLink"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -47,34 +47,39 @@ function NavigationBar() {
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link
+                    className="dropdown-item"
+                    to="/internship-procedures-employers"
+                  >
                     Déroulement des stages {"(aux employeurs)"}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link
+                    className="dropdown-item"
+                    to="/internship-procedures-students"
+                  >
                     Déroulement des stages {"(aux étudiants)"}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/profiles-and-skills">
                     Profils et compétence des stagiaires
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/FAQ">
                     FAQ
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
-                href="#"
                 id="navbarDropdownMenuLink"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -87,21 +92,26 @@ function NavigationBar() {
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link
+                    className="dropdown-item"
+                    to="/students/add-student-form"
+                  >
                     Inscrire un étudiant
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link
+                    className="dropdown-item"
+                    to="/students/registered-students"
+                  >
                     Étudiants inscrits
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
-                href="#"
                 id="navbarDropdownMenuLink"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -114,14 +124,20 @@ function NavigationBar() {
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link
+                    className="dropdown-item"
+                    to="/internships/add-internship-form"
+                  >
                     Ajouter un stage
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link
+                    className="dropdown-item"
+                    to="/internships/available-internships"
+                  >
                     Stages disponibles
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>

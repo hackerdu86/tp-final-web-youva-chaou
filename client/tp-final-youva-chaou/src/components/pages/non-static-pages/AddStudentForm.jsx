@@ -9,7 +9,7 @@ function AddStudentForm() {
   return (
     <form>
       <div className="card">
-        <div className="card-header">Ajout d'un étudiant</div>
+        <div className="card-header">Inscription d'un étudiant</div>
         <div className="card-body">
           <div className="form-group row">
             <label htmlFor="text" className="col-4 col-form-label">
