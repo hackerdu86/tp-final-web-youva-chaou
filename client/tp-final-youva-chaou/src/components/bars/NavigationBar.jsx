@@ -9,6 +9,10 @@ function NavigationBar() {
       data-bs-theme="dark"
     >
       <div className="container-fluid">
+        <img
+          src={require("../../images/montmorency-small-logo.png")}
+          style={{ width: "2rem", height: "2rem", paddingRight: "5px" }}
+        />
         <a className="navbar-brand" href="/">
           Collège Montmorency
         </a>
@@ -44,12 +48,12 @@ function NavigationBar() {
               >
                 <li>
                   <a className="dropdown-item" href="#">
-                    Déroulement des stages {"(Aux employeurs)"}
+                    Déroulement des stages {"(aux employeurs)"}
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Déroulement des stages {"(Aux étudiants)"}
+                    Déroulement des stages {"(aux étudiants)"}
                   </a>
                 </li>
                 <li>

@@ -1,4 +1,5 @@
 import NavigationBar from "./components/bars/NavigationBar";
+import FooterBar from "./components/bars/FooterBar";
 import AddStudentForm from "./components/pages/non-static-pages/AddStudentForm";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
       <NavigationBar></NavigationBar>
       <AddStudentForm></AddStudentForm>
+      <FooterBar></FooterBar>
     </div>
   );
 }
