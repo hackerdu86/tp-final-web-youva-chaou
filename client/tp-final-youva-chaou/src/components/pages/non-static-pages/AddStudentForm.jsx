@@ -1,5 +1,6 @@
 import React from "react";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 function AddStudentForm() {
   function onRegisterButtonClick() {
     console.log("dsds");
