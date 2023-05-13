@@ -5,7 +5,9 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 function FAQPage() {
   return (
     <div className="card">
-      <div className="card-header">Foire aux questions - FAQ</div>
+      <div className="card-header">
+        <h5> Foire aux questions - FAQ</h5>
+       </div>
       <div className="card-body">
         <div className="accordion accordion-flush" id="accordionFlushExample">
           <div className="accordion-item">

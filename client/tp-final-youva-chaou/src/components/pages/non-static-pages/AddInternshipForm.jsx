@@ -9,7 +9,9 @@ function AddInternshipForm() {
   return (
     <form>
       <div className="card">
-        <div className="card-header">Ajout d'un nouveau stage</div>
+        <div className="card-header">
+        <h5>Ajout d'un nouveau stage</h5>
+            </div>
         <div className="card-body">
           <form>
             <div className="form-group">

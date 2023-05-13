@@ -1,7 +1,8 @@
 import NavigationBar from "./components/bars/NavigationBar";
 import FooterBar from "./components/bars/FooterBar";
 import MainMenuPage from "./components/pages/static-pages/MainMenuPage";
-import InternshipsProcedures from "./components/pages/static-pages/InternshipsProcedures";
+import InternshipsProceduresEmployers from "./components/pages/static-pages/InternshipsProceduresEmployers";
+import InternshipsProceduresStudents from "./components/pages/static-pages/InternshipsProceduresStudents";
 import StudentNeededSkills from "./components/pages/static-pages/StudentNeededSkills";
 import FAQPage from "./components/pages/static-pages/FAQPage";
 import AddStudentForm from "./components/pages/non-static-pages/AddStudentForm";
@@ -27,11 +28,11 @@ function App() {
         <Route path="/" element={<MainMenuPage />} />
         <Route
           path="/internship-procedures-employers"
-          element={<InternshipsProcedures forStudent={false} />}
+          element={<InternshipsProceduresEmployers />}
         />
         <Route
           path="/internship-procedures-students"
-          element={<InternshipsProcedures forStudent={true} />}
+          element={<InternshipsProceduresStudents />}
         />
         <Route path="/profiles-and-skills" element={<StudentNeededSkills />} />
         <Route path="/FAQ" element={<FAQPage />} />

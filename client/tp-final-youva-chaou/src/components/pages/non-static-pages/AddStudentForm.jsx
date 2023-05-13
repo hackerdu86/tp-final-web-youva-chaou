@@ -2,14 +2,14 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 function AddStudentForm() {
-  function onRegisterButtonClick(event) {
-
-  }
+  function onRegisterButtonClick(event) {}
 
   return (
     <form>
       <div className="card">
-        <div className="card-header">Inscription d'un étudiant</div>
+        <div className="card-header">
+          <h5>Inscription d'un étudiant</h5>
+        </div>
         <div className="card-body">
           <div className="form-group">
             <label htmlFor="text">Da de l'étudiant</label>
