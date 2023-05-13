@@ -8,7 +8,6 @@ function FAQPage() {
       <div className="card-header">Foire aux questions - FAQ</div>
       <div className="card-body">
         <div className="accordion accordion-flush" id="accordionFlushExample">
-
           <div className="accordion-item">
             <h2 className="accordion-header">
               <button
@@ -19,7 +18,7 @@ function FAQPage() {
                 aria-expanded="false"
                 aria-controls="flush-collapseOne"
               >
-                 Est-ce que le stage est obligatoire?
+                Est-ce que le stage est obligatoire?
               </button>
             </h2>
             <div
@@ -28,8 +27,8 @@ function FAQPage() {
               data-bs-parent="#accordionFlushExample"
             >
               <div className="accordion-body">
-                 Le stage de fin d'études en informatique est obligatoire 
-			  pour l'obtention du diplôme collégial. 
+                Le stage de fin d'études en informatique est obligatoire pour
+                l'obtention du diplôme collégial.
               </div>
             </div>
           </div>
@@ -52,7 +51,8 @@ function FAQPage() {
               data-bs-parent="#accordionFlushExample"
             >
               <div className="accordion-body">
-              L'étudiant doit respecter l'horaire de l'entreprise durant son stage. 
+                L'étudiant doit respecter l'horaire de l'entreprise durant son
+                stage.
               </div>
             </div>
           </div>
@@ -66,8 +66,8 @@ function FAQPage() {
                 aria-expanded="false"
                 aria-controls="flush-collapseThree"
               >
-             Est-ce que l'étudiant travaille pendant les journées pédagogiques et
-			  les journées de rattrapage?
+                Est-ce que l'étudiant travaille pendant les journées
+                pédagogiques et les journées de rattrapage?
               </button>
             </h2>
             <div
@@ -76,8 +76,9 @@ function FAQPage() {
               data-bs-parent="#accordionFlushExample"
             >
               <div className="accordion-body">
-              L'étudiant doit respecter l'horaire de l'entreprise durant son stage et ce même
-			  durant les journées pédagogiques et de rattrapage. 
+                L'étudiant doit respecter l'horaire de l'entreprise durant son
+                stage et ce même durant les journées pédagogiques et de
+                rattrapage.
               </div>
             </div>
           </div>
@@ -91,7 +92,7 @@ function FAQPage() {
                 aria-expanded="false"
                 aria-controls="flush-collapseFour"
               >
-            Quelle est la durée d'un stage de fin d'études?
+                Quelle est la durée d'un stage de fin d'études?
               </button>
             </h2>
             <div
@@ -100,7 +101,8 @@ function FAQPage() {
               data-bs-parent="#accordionFlushExample"
             >
               <div className="accordion-body">
-              La durée du stage est de 15 semaines pour les deux profils de sortie (réseaux et programmation). 
+                La durée du stage est de 15 semaines pour les deux profils de
+                sortie (réseaux et programmation).
               </div>
             </div>
           </div>
@@ -114,7 +116,7 @@ function FAQPage() {
                 aria-expanded="false"
                 aria-controls="flush-collapseFive"
               >
-            Quelles sont les dates prévues pour les stages?
+                Quelles sont les dates prévues pour les stages?
               </button>
             </h2>
             <div
@@ -123,8 +125,7 @@ function FAQPage() {
               data-bs-parent="#accordionFlushExample"
             >
               <div className="accordion-body">
-              Les stages sont prévus du 21 janvier au 3 mai 2019. 
-
+                Les stages sont prévus du 21 janvier au 3 mai 2019.
               </div>
             </div>
           </div>
