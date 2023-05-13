@@ -4,85 +4,129 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function FAQPage() {
   return (
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-    <h1>FAQ</h1>
+    <div className="card">
+      <div className="card-header">Foire aux questions - FAQ</div>
+      <div className="card-body">
+        <div className="accordion accordion-flush" id="accordionFlushExample">
 
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseOne"
-            aria-expanded="false"
-            aria-controls="flush-collapseOne"
-          >
-            Accordion Item #1
-          </button>
-        </h2>
-        <div
-          id="flush-collapseOne"
-          class="accordion-collapse collapse"
-          data-bs-parent="#accordionFlushExample"
-        >
-          <div class="accordion-body">
-            Placeholder content for this accordion, which is intended to
-            demonstrate the <code>.accordion-flush</code> class. This is the
-            first item's accordion body.
+          <div className="accordion-item">
+            <h2 className="accordion-header">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne"
+                aria-expanded="false"
+                aria-controls="flush-collapseOne"
+              >
+                 Est-ce que le stage est obligatoire?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseOne"
+              className="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div className="accordion-body">
+                 Le stage de fin d'études en informatique est obligatoire 
+			  pour l'obtention du diplôme collégial. 
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseTwo"
-            aria-expanded="false"
-            aria-controls="flush-collapseTwo"
-          >
-            Accordion Item #2
-          </button>
-        </h2>
-        <div
-          id="flush-collapseTwo"
-          class="accordion-collapse collapse"
-          data-bs-parent="#accordionFlushExample"
-        >
-          <div class="accordion-body">
-            Placeholder content for this accordion, which is intended to
-            demonstrate the <code>.accordion-flush</code> class. This is the
-            second item's accordion body. Let's imagine this being filled with
-            some actual content.
+          <div className="accordion-item">
+            <h2 className="accordion-header">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo"
+                aria-expanded="false"
+                aria-controls="flush-collapseTwo"
+              >
+                Quel est l'horaire de l'étudiant durant les stages?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseTwo"
+              className="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div className="accordion-body">
+              L'étudiant doit respecter l'horaire de l'entreprise durant son stage. 
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseThree"
-            aria-expanded="false"
-            aria-controls="flush-collapseThree"
-          >
-            Accordion Item #3
-          </button>
-        </h2>
-        <div
-          id="flush-collapseThree"
-          class="accordion-collapse collapse"
-          data-bs-parent="#accordionFlushExample"
-        >
-          <div class="accordion-body">
-            Placeholder content for this accordion, which is intended to
-            demonstrate the <code>.accordion-flush</code> class. This is the
-            third item's accordion body. Nothing more exciting happening here in
-            terms of content, but just filling up the space to make it look, at
-            least at first glance, a bit more representative of how this would
-            look in a real-world application.
+          <div className="accordion-item">
+            <h2 className="accordion-header">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseThree"
+                aria-expanded="false"
+                aria-controls="flush-collapseThree"
+              >
+             Est-ce que l'étudiant travaille pendant les journées pédagogiques et
+			  les journées de rattrapage?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseThree"
+              className="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div className="accordion-body">
+              L'étudiant doit respecter l'horaire de l'entreprise durant son stage et ce même
+			  durant les journées pédagogiques et de rattrapage. 
+              </div>
+            </div>
+          </div>
+          <div className="accordion-item">
+            <h2 className="accordion-header">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseFour"
+                aria-expanded="false"
+                aria-controls="flush-collapseFour"
+              >
+            Quelle est la durée d'un stage de fin d'études?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseFour"
+              className="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div className="accordion-body">
+              La durée du stage est de 15 semaines pour les deux profils de sortie (réseaux et programmation). 
+              </div>
+            </div>
+          </div>
+          <div className="accordion-item">
+            <h2 className="accordion-header">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseFive"
+                aria-expanded="false"
+                aria-controls="flush-collapseFive"
+              >
+            Quelles sont les dates prévues pour les stages?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseFive"
+              className="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div className="accordion-body">
+              Les stages sont prévus du 21 janvier au 3 mai 2019. 
+
+              </div>
+            </div>
           </div>
         </div>
       </div>

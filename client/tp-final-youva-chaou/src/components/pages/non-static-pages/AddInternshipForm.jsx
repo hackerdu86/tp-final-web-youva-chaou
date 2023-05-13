@@ -1,4 +1,11 @@
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 function AddInternshipForm() {
+  function onRegisterButtonClick(event) {
+  }
+
   return (
     <form>
       <div className="card">
@@ -6,7 +13,7 @@ function AddInternshipForm() {
         <div className="card-body">
           <form>
             <div className="form-group">
-              <label htmlhtmlFor="text1">Nom de l'entreprise</label>
+              <label htmlFor="text1">Nom de l'entreprise</label>
               <input
                 id="text1"
                 name="text1"
@@ -16,7 +23,7 @@ function AddInternshipForm() {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="text5">Adresse de l’entreprise</label>
+              <label htmlFor="text5">Adresse de l'entreprise</label>
               <div className="input-group">
                 <div className="input-group-prepend">
                   <div className="input-group-text">
@@ -147,7 +154,12 @@ function AddInternshipForm() {
               />
             </div>
             <div className="form-group">
-              <button className="btn btn-primary">Ajouter le stage</button>
+              <button
+                onClick={onRegisterButtonClick}
+                className="btn btn-primary"
+              >
+                Ajouter le stage
+              </button>
             </div>
           </form>
         </div>
