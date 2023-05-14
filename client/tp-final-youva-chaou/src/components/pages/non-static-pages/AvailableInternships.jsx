@@ -11,58 +11,71 @@ function AvailableInternships() {
   //Events
   function onChangeRadioButton() {
     if (everyInternshipRef.current.checked) {
-      setContentPlaceHolder(fromListToInternshipCard(currentInternshipsList));
+      setFilteredInternshipsList(currentInternshipsList);
     } else if (appDevelopmentRef.current.checked) {
-      setContentPlaceHolder(fromListToInternshipCard(filterInternshipsByField("Développement d'applications")));
+      setFilteredInternshipsList(
+        filterInternshipsByField("Développement d'applications")
+      );
     } else if (itAndSecurityRef.current.checked) {
-      setContentPlaceHolder(fromListToInternshipCard(filterInternshipsByField("Réseaux et sécurité")));
+      setFilteredInternshipsList(
+        filterInternshipsByField("Réseaux et sécurité")
+      );
     }
+  }
+  //Event called by <InternshipCard />
+  function deleteInternship(internshipId) {
+    apiInternshipManager
+      .deleteInternshipEntry(internshipId)
+      .then((res) => {
+        console.log(res);
+        let currentInternshipsListCopy = currentInternshipsList.filter(
+          (internship) => {
+            return internship._id !== internshipId;
+          }
+        );
+        let filteredInternshipsListCopy = filteredInternshipsList.filter(
+          (internship) => {
+            return internship._id !== internshipId;
+          }
+        );
+        setCurrentInternshpsList(currentInternshipsListCopy);
+        setFilteredInternshipsList(filteredInternshipsListCopy);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   //Other functions
   function filterInternshipsByField(field = NaN) {
-    let filteredList = [...currentInternshipsList];
-    if (
-      field
-    ) {
-      filteredList = filteredList.filter((internship) => {
-        return internship.internshipType === field;
+    const filteredList = [];
+    if (field) {
+      console.log("currentInternshipsList", currentInternshipsList);
+      currentInternshipsList.map((internship) => {
+        if (internship.internshipType === field) {
+          filteredList.push(internship);
+        }
       });
     }
     return filteredList;
-  }
-
-  function fromListToInternshipCard(internshipsList) {
-    return internshipsList.map((internship) => {
-      return (
-        <InternshipCard
-          companyName={internship.companyName}
-          companyAdress={internship.companyAdress}
-          contactFullName={internship.contactFullName}
-          contactEmail={internship.contactEmail}
-          contactNumber={internship.contactNumber}
-          description={internship.description}
-          internshipType={internship.internshipType}
-          availablePositions={internship.availablePositions}
-          hourWage={internship.internshipHourWage}
-        />
-      );
-    });
   }
 
   const [contentPlaceHolder, setContentPlaceHolder] = useState(
     <CustomLoader />
   );
   const [currentInternshipsList, setCurrentInternshpsList] = useState([]);
+  const [filteredInternshipsList, setFilteredInternshipsList] = useState([]);
 
+  //Page reloading dependant
   useEffect(() => {
     apiInternshipManager
       .getInternshipsEntries()
       .then((res) => {
         console.log(res);
         const { internships } = res.data;
-        setContentPlaceHolder(fromListToInternshipCard(internships));
+        setContentPlaceHolder(null);
         setCurrentInternshpsList(internships);
+        setFilteredInternshipsList(internships);
       })
       .catch((err) => {
         console.log(err);
@@ -119,7 +132,26 @@ function AvailableInternships() {
             </div>
           </div>
         </div>
-        <div class="row">{contentPlaceHolder}</div>
+        <div class="row">
+          {contentPlaceHolder}
+          {filteredInternshipsList.map((internship) => {
+            return (
+              <InternshipCard
+                internshipId={internship._id}
+                companyName={internship.companyName}
+                companyAdress={internship.companyAdress}
+                contactFullName={internship.contactFullName}
+                contactEmail={internship.contactEmail}
+                contactNumber={internship.contactNumber}
+                description={internship.description}
+                internshipType={internship.internshipType}
+                availablePositions={internship.availablePositions}
+                hourWage={internship.internshipHourWage}
+                deleteInternship={deleteInternship}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

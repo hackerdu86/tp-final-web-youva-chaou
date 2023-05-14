@@ -1,21 +1,22 @@
 import React from "react";
-import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function InternshipCard(props) {
-
+  function autoDestroy() {
+    props.deleteInternship(props.internshipId);
+  }
 
   return (
     <div class="col-sm-6">
-      <div class="card" style={{marginTop: "1rem", marginBottom: "1rem"}}>
+      <div class="card" style={{ marginTop: "1rem", marginBottom: "1rem" }}>
         <h5 class="card-header">
           {props.companyName} <br></br>
           <br></br>
           {props.companyAdress}
         </h5>
 
-        <div class="card-body" >
+        <div class="card-body">
           <h5 class="card-title">Contact du stage:</h5>
 
           <p class="card-text">Nom complet: {props.contactFullName}</p>
@@ -29,7 +30,7 @@ function InternshipCard(props) {
             Nombre de places disponibles: {props.availablePositions}
           </p>
           <p class="card-text">Salaire: {props.hourWage}$/Heure</p>
-          <button class="btn btn-primary">
+          <button class="btn btn-primary" onClick={autoDestroy}>
             Supprimer ce stage
           </button>
         </div>

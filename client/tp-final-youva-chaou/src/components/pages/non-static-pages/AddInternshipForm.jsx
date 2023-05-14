@@ -43,7 +43,7 @@ function AddInternshipForm() {
     }
     setSpinnerClass(spinnerClassName);
 
-    //Posting student object to server
+    //Posting internship object to server
     apiInternshipManager
       .createInternshipEntry(
         contactFullName,
@@ -78,7 +78,7 @@ function AddInternshipForm() {
   );
   const unknownErrorAlertComponent = (
     <div class="alert alert-danger" role="alert">
-      Une erreur s'est produite.
+      Une erreur s'est produite, veuillez communiquer avec le coordonateur des stage: sylvain.labranche@cmontmorency.qc.ca
     </div>
   );
   const internshipCreatedAlertComponent = (

@@ -33,7 +33,9 @@ async function createInternshipEntry(
 }
 
 //DELETE
-async function deleteInternshipEntry(internshipId) {}
+async function deleteInternshipEntry(internshipId) {
+  return await axios.delete(URL + internshipId);
+}
 
 //Other functions
 function fromInternshipDateToJsonObject(
