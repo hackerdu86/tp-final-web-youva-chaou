@@ -3,6 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function StudentCard(props) {
+  function autoDestroy() {
+    props.deleteStudent(props.studentId);
+  }
+
   return (
     <div
       class={
@@ -33,11 +37,13 @@ function StudentCard(props) {
             Stages
           </a>
 
-          <ul class="dropdown-menu">
-            
-          </ul>
+          <ul class="dropdown-menu"></ul>
         </span>
-        <button class="btn btn-danger" style={{ float: "right" }}>
+        <button
+          class="btn btn-danger"
+          style={{ float: "right" }}
+          onClick={autoDestroy}
+        >
           Supprimer cet étudiant
         </button>
       </div>
