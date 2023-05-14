@@ -25,6 +25,7 @@ function MainMenuPage() {
           d'applications informatiques.
         </p>
       </div>
+      <div></div>
     </div>
   );
 }

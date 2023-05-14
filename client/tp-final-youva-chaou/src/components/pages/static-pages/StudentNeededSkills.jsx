@@ -5,7 +5,7 @@ function StudentNeededSkills() {
         <h5>Profiles et compétences des stagiaires de Montmorency</h5>
 
         <div className="card-body">
-          <h6>Développement d'applications:</h6>
+          <h6>Réseaux et sécurité:</h6>
           <p>
             Nos étudiants en Gestion de réseaux et sécurité ont suivi des cours
             leur permettant de:
@@ -76,7 +76,7 @@ function StudentNeededSkills() {
             </li>
           </ul>
           <br></br>
-          <h6>Réseaux et sécurité:</h6>
+          <h6>Développement d'applications</h6>
           <p>
             Nos étudiant en Développement d'applications informatiques ont suivi
             des cours leur permettant de:
