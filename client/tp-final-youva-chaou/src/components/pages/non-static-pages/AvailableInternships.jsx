@@ -43,6 +43,12 @@ function AvailableInternships() {
       })
       .catch((err) => {
         console.log(err);
+        setContentPlaceHolder(
+          <div class="alert alert-danger" role="alert">
+            Une erreur s'est produite, veuillez communiquer avec le coordonateur
+            des stage: sylvain.labranche@cmontmorency.qc.ca
+          </div>
+        );
       });
   }
 

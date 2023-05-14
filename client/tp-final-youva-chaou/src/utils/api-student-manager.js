@@ -2,9 +2,10 @@ import axios from "axios";
 const URL = "/students/";
 
 //GET
-async function getStudentsEntries() {}
+async function getStudentsEntries() {
+  return await axios.get(URL);
+}
 
-async function getStudentEntry(studentId) {}
 //POST
 async function createStudentEntry(
   daNumber,
@@ -22,10 +23,14 @@ async function createStudentEntry(
 }
 
 //PATCH
-async function registerStudentEntry(studentId, internshipId) {}
+async function registerStudentEntry(studentId, internshipId) {
+  return await axios.patch(URL + studentId + "/internships/" + internshipId);
+}
 
 //DELETE
-async function deleteStudentEntry(studentId) {}
+async function deleteStudentEntry(studentId) {
+  return await axios.delete(URL + studentId);
+}
 
 //Other functions
 function fromStudentDateToJsonObject(
@@ -45,8 +50,8 @@ function fromStudentDateToJsonObject(
 
 const apiStudentManager = {
   getStudentsEntries: getStudentsEntries,
-  getStudentEntry: getStudentEntry,
   createStudentEntry: createStudentEntry,
+  registerStudentEntry: registerStudentEntry,
   deleteStudentEntry: deleteStudentEntry,
 };
 

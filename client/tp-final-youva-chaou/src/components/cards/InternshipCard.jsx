@@ -30,7 +30,7 @@ function InternshipCard(props) {
             Nombre de places disponibles: {props.availablePositions}
           </p>
           <p class="card-text">Salaire: {props.hourWage}$/Heure</p>
-          <button class="btn btn-primary" onClick={autoDestroy}>
+          <button class="btn btn-danger" onClick={autoDestroy}>
             Supprimer ce stage
           </button>
         </div>
