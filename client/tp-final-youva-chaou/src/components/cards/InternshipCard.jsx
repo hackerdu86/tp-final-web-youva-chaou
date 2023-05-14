@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function InternshipCard(props) {
+
+
   return (
     <div class="col-sm-6">
       <div class="card" style={{marginTop: "1rem", marginBottom: "1rem"}}>
@@ -22,13 +24,14 @@ function InternshipCard(props) {
           <p class="card-text"></p>
           <h5 class="card-title">À propos du stage:</h5>
           <p class="card-text">{props.description}</p>
+          <p class="card-text">Type de stage: {props.internshipType}</p>
           <p class="card-text">
             Nombre de places disponibles: {props.availablePositions}
           </p>
           <p class="card-text">Salaire: {props.hourWage}$/Heure</p>
-          <a href="#" class="btn btn-primary">
-            Supprimer le stage
-          </a>
+          <button class="btn btn-primary">
+            Supprimer ce stage
+          </button>
         </div>
       </div>
     </div>
