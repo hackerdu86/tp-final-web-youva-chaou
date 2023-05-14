@@ -1,9 +1,50 @@
-import InternshipCard from "../../cards/InternshipCard";
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import apiInternshipManager from "../../../utils/api-internship-manager";
+import CustomLoader from "../../animated-components/CustomLoader";
+import InternshipCard from "../../cards/InternshipCard";
 import "../../styles/RadioButtons.css";
 
 function AvailableInternships() {
+  const [contentPlaceHolder, setContentPlaceHolder] = useState(
+    <CustomLoader />
+  );
+  const [internshipsList, setInternshipList] = useState([]);
+
+  useEffect(() => {
+    apiInternshipManager
+      .getInternshipsEntries()
+      .then((res) => {
+        console.log(res);
+        const { internships } = res.data;
+        setContentPlaceHolder(
+          internships.map((internship) => {
+            return (
+              <InternshipCard
+                companyName={internship.companyName}
+                companyAdress={internship.companyAdress}
+                contactFullName={internship.contactFullName}
+                contactEmail={internship.contactEmail}
+                contactNumber={internship.contactNumber}
+                description={internship.description}
+                availablePositions={internship.availablePositions}
+                hourWage={internship.internshipHourWage}
+              />
+            );
+          })
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+        setContentPlaceHolder(
+          <div class="alert alert-danger" role="alert">
+            Une erreur s'est produite.
+          </div>
+        );
+      });
+  }, []);
+
   return (
     <div class="card">
       <div className="card-header">
@@ -29,48 +70,7 @@ function AvailableInternships() {
             </div>
           </div>
         </div>
-        <div class="row">
-          <InternshipCard
-            companyName={"MacDounald"}
-            companyAdress={"484 rue de la pommeraie"}
-            contactFullName={"Youva Chaou"}
-            contactNumber={"4389852733"}
-            contactEmail={"youvachaou1234@gmail.com"}
-            availablePositions={23}
-            hourWage={32.21}
-            description={"oijdsoiajdoisajdoisajidojsaiodjsaiojdasoijdiosaj"}
-          />
-          <InternshipCard
-            companyName={"MacDounald"}
-            companyAdress={"484 rue de la pommeraie"}
-            contactFullName={"Youva Chaou"}
-            contactNumber={"4389852733"}
-            contactEmail={"youvachaou1234@gmail.com"}
-            availablePositions={23}
-            hourWage={32.21}
-            description={"oijdsoiajdoisajdoisajidojsaiodjsaiojdasoijdiosaj"}
-          />{" "}
-          <InternshipCard
-            companyName={"MacDounald"}
-            companyAdress={"484 rue de la pommeraie"}
-            contactFullName={"Youva Chaou"}
-            contactNumber={"4389852733"}
-            contactEmail={"youvachaou1234@gmail.com"}
-            availablePositions={23}
-            hourWage={32.21}
-            description={"oijdsoiajdoisajdoisajidojsaiodjsaiojdasoijdiosaj"}
-          />{" "}
-          <InternshipCard
-            companyName={"MacDounald"}
-            companyAdress={"484 rue de la pommeraie"}
-            contactFullName={"Youva Chaou"}
-            contactNumber={"4389852733"}
-            contactEmail={"youvachaou1234@gmail.com"}
-            availablePositions={23}
-            hourWage={32.21}
-            description={"oijdsoiajdoisajdoisajidojsaiodjsaiojdasoijdiosaj"}
-          />
-        </div>
+        <div class="row">{contentPlaceHolder}</div>
       </div>
     </div>
   );

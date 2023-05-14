@@ -41,6 +41,7 @@ async function addInternship(req, res, next) {
   const {
     contactFullName,
     contactEmail,
+    contactNumber,
     companyName,
     companyAdress,
     internshipType,
@@ -52,6 +53,7 @@ async function addInternship(req, res, next) {
     const internshipToAdd = new Internship({
       contactFullName: contactFullName,
       contactEmail: contactEmail,
+      contactNumber: contactNumber,
       companyName: companyName,
       companyAdress: companyAdress,
       internshipType: internshipType,
@@ -80,7 +82,12 @@ async function deleteInternship(req, res, next) {
     }
     await Internship.deleteOne({ _id: internshipId });
     await removeInternshipFromStudentsEntries(internshipId);
-    res.status(200).json({ message: "Intership was successfully deleted and removed from all students entries" });
+    res
+      .status(200)
+      .json({
+        message:
+          "Intership was successfully deleted and removed from all students entries",
+      });
   } catch (err) {
     console.log(err);
     return next(new HttpError("Error while trying to delete internship", 500));

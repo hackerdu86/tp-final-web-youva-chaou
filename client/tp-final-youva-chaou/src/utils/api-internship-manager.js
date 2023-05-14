@@ -1,14 +1,16 @@
-import axios from 'axios';
+import axios from "axios";
 const URL = "/internships/";
 
 //GET
-async function getInternshipsEntries() {}
+async function getInternshipsEntries() {
+  return await axios.get(URL);
+}
 
-async function getInternshipEntry(internshipId) {}
 //POST
 async function createInternshipEntry(
   contactFullName,
   contactEmail,
+  contactNumber,
   companyName,
   companyAdress,
   internshipType,
@@ -19,6 +21,7 @@ async function createInternshipEntry(
   const internshipEntry = fromInternshipDateToJsonObject(
     contactFullName,
     contactEmail,
+    contactNumber,
     companyName,
     companyAdress,
     internshipType,
@@ -26,7 +29,7 @@ async function createInternshipEntry(
     internshipDescription,
     internshipHourWage
   );
-  return await axios.post(URL, internshipEntry)
+  return await axios.post(URL, internshipEntry);
 }
 
 //DELETE
@@ -36,6 +39,7 @@ async function deleteInternshipEntry(internshipId) {}
 function fromInternshipDateToJsonObject(
   contactFullName,
   contactEmail,
+  contactNumber,
   companyName,
   companyAdress,
   internshipType,
@@ -46,6 +50,7 @@ function fromInternshipDateToJsonObject(
   return {
     contactFullName: contactFullName,
     contactEmail: contactEmail,
+    contactNumber: contactNumber,
     companyName: companyName,
     companyAdress: companyAdress,
     internshipType: internshipType,
@@ -58,7 +63,6 @@ function fromInternshipDateToJsonObject(
 
 const apiInternshipManager = {
   getInternshipsEntries: getInternshipsEntries,
-  getInternshipEntry: getInternshipEntry,
   createInternshipEntry: createInternshipEntry,
   deleteInternshipEntry: deleteInternshipEntry,
 };

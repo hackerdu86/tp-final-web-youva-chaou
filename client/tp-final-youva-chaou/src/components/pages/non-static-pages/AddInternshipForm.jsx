@@ -48,6 +48,7 @@ function AddInternshipForm() {
       .createInternshipEntry(
         contactFullName,
         contactEmail,
+        contactNumber,
         companyName,
         companyAdress,
         profilType,
