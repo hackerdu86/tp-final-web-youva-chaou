@@ -26,7 +26,7 @@ async function createInternshipEntry(
     internshipDescription,
     internshipHourWage
   );
-  return response = await axios.post(URL, internshipEntry)
+  return await axios.post(URL, internshipEntry)
 }
 
 //DELETE

@@ -1,17 +1,111 @@
 import React from "react";
+import { useState, createRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import apiInternshipManager from "../../../utils/api-internship-manager";
 
 function AddInternshipForm() {
   function onRegisterButtonClick(event) {
+    event.preventDefault();
+    const companyName = companyNameRef.current.value.trim(),
+      companyAdress = companyAdressRef.current.value.trim(),
+      contactFullName = contactFullNameRef.current.value.trim(),
+      contactEmail = contactEmailRef.current.value.trim(),
+      contactNumber = contactNumberRef.current.value.trim(),
+      profilType = profilTypeRef.current.checked
+        ? "Développement d'applications"
+        : "Réseaux et sécurité",
+      availablePosition = availablePositionRef.current.value,
+      description = descriptionRef.current.value.trim(),
+      hourWage = hourWageRef.current.value;
+    console.log(
+      companyName,
+      companyAdress,
+      contactFullName,
+      contactEmail,
+      contactNumber,
+      profilType,
+      description,
+      hourWage
+    );
+    if (
+      !companyName ||
+      !companyAdress ||
+      !contactFullName ||
+      !contactEmail ||
+      !contactNumber ||
+      !description ||
+      !availablePosition ||
+      !hourWage
+    ) {
+      setAlertPlaceHolder(fieldsNotFilledAlertComponent);
+      return;
+    }
+    setSpinnerClass(spinnerClassName);
+
+    //Posting student object to server
+    apiInternshipManager
+      .createInternshipEntry(
+        contactFullName,
+        contactEmail,
+        companyName,
+        companyAdress,
+        profilType,
+        availablePosition,
+        description,
+        hourWage
+      )
+      .then((res) => {
+        console.log(res);
+        setSpinnerClass(null);
+        setAlertPlaceHolder(internshipCreatedAlertComponent);
+      })
+      .catch((err) => {
+        console.log(err);
+        setSpinnerClass(null);
+        setAlertPlaceHolder(unknownErrorAlertComponent);
+      });
   }
+  //States
+  const [alertPlaceHolder, setAlertPlaceHolder] = useState(null);
+  const [spinnerClass, setSpinnerClass] = useState(null);
+
+  const fieldsNotFilledAlertComponent = (
+    <div class="alert alert-danger" role="alert">
+      Veuillez remplir tous les champs.
+    </div>
+  );
+  const unknownErrorAlertComponent = (
+    <div class="alert alert-danger" role="alert">
+      Une erreur s'est produite.
+    </div>
+  );
+  const internshipCreatedAlertComponent = (
+    <div class="alert alert-success" role="alert">
+      Le stage a bien été créé.
+    </div>
+  );
+
+  const spinnerClassName = "spinner-border spinner-border-sm";
+
+  //Fields refs
+  const companyNameRef = createRef(),
+    companyAdressRef = createRef(),
+    contactFullNameRef = createRef(),
+    contactEmailRef = createRef(),
+    contactNumberRef = createRef(),
+    profilTypeRef = createRef(),
+    availablePositionRef = createRef(),
+    descriptionRef = createRef(),
+    hourWageRef = createRef(),
+    sumbitButtonRef = createRef();
 
   return (
     <form>
       <div className="card">
         <div className="card-header">
-        <h5>Ajout d'un nouveau stage</h5>
-            </div>
+          <h5>Ajout d'un nouveau stage</h5>
+        </div>
         <div className="card-body">
           <form>
             <div className="form-group">
@@ -22,6 +116,7 @@ function AddInternshipForm() {
                 type="text"
                 required="required"
                 className="form-control"
+                ref={companyNameRef}
               />
             </div>
             <div className="form-group">
@@ -38,6 +133,7 @@ function AddInternshipForm() {
                   type="text"
                   required="required"
                   className="form-control"
+                  ref={companyAdressRef}
                 />
               </div>
             </div>
@@ -56,6 +152,7 @@ function AddInternshipForm() {
                   type="text"
                   required="required"
                   className="form-control"
+                  ref={contactFullNameRef}
                 />
               </div>
             </div>
@@ -74,6 +171,7 @@ function AddInternshipForm() {
                   type="text"
                   required="required"
                   className="form-control"
+                  ref={contactEmailRef}
                 />
               </div>
             </div>
@@ -94,6 +192,7 @@ function AddInternshipForm() {
                   type="text"
                   required="required"
                   className="form-control"
+                  ref={contactNumberRef}
                 />
               </div>
             </div>
@@ -108,6 +207,7 @@ function AddInternshipForm() {
                     className="custom-control-input"
                     value="profil1"
                     defaultChecked
+                    ref={profilTypeRef}
                   />
                   <label htmlFor="radio_0" className="custom-control-label">
                     Développement d'applications
@@ -137,6 +237,7 @@ function AddInternshipForm() {
                 className="form-control"
                 aria-describedby="textareaHelpBlock"
                 required="required"
+                ref={descriptionRef}
               ></textarea>
               <span id="textareaHelpBlock" className="form-text text-muted">
                 Fournissez une brève description du stage, incluez si vous le
@@ -145,24 +246,45 @@ function AddInternshipForm() {
               </span>
             </div>
             <div className="form-group">
+              <label htmlFor="text7">Nombre de positions disponibles</label>
+              <input
+                id="text7"
+                name="text7"
+                placeholder="Nombre d'étudiant maximum qui seront sélectionné pour ce stage"
+                type="number"
+                className="form-control"
+                required="required"
+                ref={availablePositionRef}
+              />
+            </div>
+
+            <div className="form-group">
               <label htmlFor="text3">Salaire</label>
               <input
                 id="text3"
                 name="text3"
                 placeholder="$/heure (approximatif)"
-                type="text"
+                type="number"
                 className="form-control"
                 required="required"
+                ref={hourWageRef}
               />
             </div>
             <div className="form-group">
               <button
                 onClick={onRegisterButtonClick}
                 className="btn btn-primary"
+                ref={sumbitButtonRef}
               >
+                <span
+                  className={spinnerClass}
+                  role="status"
+                  aria-hidden="true"
+                ></span>
                 Ajouter le stage
               </button>
             </div>
+            {alertPlaceHolder}
           </form>
         </div>
       </div>

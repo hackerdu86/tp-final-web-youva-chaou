@@ -2,29 +2,50 @@ import React from "react";
 import { createRef, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import apiStudentManager from "../../../utils/api-student-manager";
+
 function AddStudentForm() {
   function onRegisterButtonClick(event) {
     event.preventDefault();
-    const daNumber = daNumberRef.current.value,
-      fullName = fullNameRef.current.value,
-      email = emailRef.current.value,
-      profilType = profilTypeRef.current.value;
+    const daNumber = daNumberRef.current.value.trim(),
+      fullName = fullNameRef.current.value.trim(),
+      email = emailRef.current.value.trim(),
+      profilType = profilTypeRef.current.checked
+        ? "Développement d'applications"
+        : "Réseaux et sécurité";
     console.log(daNumber, fullName, email, profilType);
     if (!daNumber || !fullName || !email || !profilType) {
-      setFieldsNotFilledAlert(fieldsNotFilledAlertComponent);
-      setStudentCreatedAlert(null);
+      setAlertPlaceHolder(fieldsNotFilledAlertComponent);
       return;
     }
-    setFieldsNotFilledAlert(null);
-    setStudentCreatedAlert(studentCreatedAlertComponent);
+    setSpinnerClass(spinnerClassName);
+
+    //Posting student object to server
+    apiStudentManager
+      .createStudentEntry(daNumber, fullName, email, profilType)
+      .then((res) => {
+        console.log(res);
+        setSpinnerClass(null);
+        setAlertPlaceHolder(studentCreatedAlertComponent);
+      })
+      .catch((err) => {
+        console.log(err);
+        setSpinnerClass(null);
+        setAlertPlaceHolder(unknownErrorAlertComponent);
+      });
   }
   //States
-  const [fieldsNotFilledAlert, setFieldsNotFilledAlert] = useState(null);
-  const [studentCreatedAlert, setStudentCreatedAlert] = useState(null);
+  const [alertPlaceHolder, setAlertPlaceHolder] = useState(null);
+  const [spinnerClass, setSpinnerClass] = useState(null);
 
   const fieldsNotFilledAlertComponent = (
     <div class="alert alert-danger" role="alert">
       Veuillez remplir tous les champs.
+    </div>
+  );
+  const unknownErrorAlertComponent = (
+    <div class="alert alert-danger" role="alert">
+      Une erreur s'est produite.
     </div>
   );
   const studentCreatedAlertComponent = (
@@ -32,20 +53,20 @@ function AddStudentForm() {
       L'étudiant a bien été inscrit.
     </div>
   );
-  const spinnerClass = { class: "spinner-border spinner-border-sm" };
+
+  const spinnerClassName = "spinner-border spinner-border-sm";
 
   //Fields refs
   const daNumberRef = createRef(),
     fullNameRef = createRef(),
     emailRef = createRef(),
-    profilTypeRef = createRef();
+    profilTypeRef = createRef(),
+    sumbitButtonRef = createRef();
 
   return (
     <form>
       <div className="card">
         <div className="card-header">
-          {fieldsNotFilledAlert}
-          {studentCreatedAlert}
           <h5>Inscription d'un étudiant</h5>
         </div>
         <div className="card-body">
@@ -127,11 +148,20 @@ function AddStudentForm() {
             </div>
           </div>
           <div className="form-group">
-            <button onClick={onRegisterButtonClick} className="btn btn-primary">
-              <span role="status" aria-hidden="true"></span>
+            <button
+              onClick={onRegisterButtonClick}
+              className="btn btn-primary"
+              ref={sumbitButtonRef}
+            >
+              <span
+                className={spinnerClass}
+                role="status"
+                aria-hidden="true"
+              ></span>
               Inscrire l'étudiant
             </button>
           </div>
+          {alertPlaceHolder}
         </div>
       </div>
     </form>
