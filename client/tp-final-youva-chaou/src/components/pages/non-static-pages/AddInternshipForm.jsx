@@ -2,6 +2,7 @@ import React from "react";
 import { useState, createRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+//import sendEmail from "../../../utils/email-sender";
 import apiInternshipManager from "../../../utils/api-internship-manager";
 
 function AddInternshipForm() {
@@ -60,6 +61,16 @@ function AddInternshipForm() {
         console.log(res);
         setSpinnerClass(null);
         setAlertPlaceHolder(internshipCreatedAlertComponent);
+        const emailBody =
+          "Compagnie: " +
+          companyName +
+          "\n Contact du stage: \n" +
+          contactFullName +
+          "\n" +
+          contactEmail +
+          "\n" +
+          contactNumber;
+        //sendEmail("youvachaou1234@gmail.com", "Un nouveau stage a été ajouté");
       })
       .catch((err) => {
         console.log(err);
@@ -78,7 +89,8 @@ function AddInternshipForm() {
   );
   const unknownErrorAlertComponent = (
     <div class="alert alert-danger" role="alert">
-      Une erreur s'est produite, veuillez communiquer avec le coordonateur des stage: sylvain.labranche@cmontmorency.qc.ca
+      Une erreur s'est produite, veuillez communiquer avec le coordonateur des
+      stage: sylvain.labranche@cmontmorency.qc.ca
     </div>
   );
   const internshipCreatedAlertComponent = (

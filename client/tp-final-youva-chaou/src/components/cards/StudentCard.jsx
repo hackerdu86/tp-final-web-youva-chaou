@@ -11,13 +11,12 @@ function StudentCard(props) {
     <div
       class={
         "card " +
-        (props.primaryStyle ? "text-bg-light" : "text-bg-secondary") +
-        "mb-3"
+        (!props.primaryStyle ? "text-bg-light" : "text-bg-secondary")
       }
       style={{ maxWidth: "90%", margin: "1rem auto" }}
     >
       <h5 class="card-header">
-        Nom de l'étudiant: {props.fullName} | ID: {props.studentId}{" "}
+        Nom de l'étudiant: {props.fullName}
       </h5>
       <div class="card-body">
         <h6 class="card-title">Courriel: {props.email}</h6>
@@ -47,6 +46,7 @@ function StudentCard(props) {
           Supprimer cet étudiant
         </button>
       </div>
+      <div class="card-footer text-body-secondary">ID: {props.studentId}</div>
     </div>
   );
 }

@@ -34,6 +34,9 @@ function InternshipCard(props) {
             Supprimer ce stage
           </button>
         </div>
+        <div class="card-footer text-body-secondary">
+          ID: {props.internshipId}
+        </div>
       </div>
     </div>
   );
