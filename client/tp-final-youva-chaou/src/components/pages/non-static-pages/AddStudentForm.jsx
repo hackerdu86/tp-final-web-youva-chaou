@@ -45,7 +45,8 @@ function AddStudentForm() {
   );
   const unknownErrorAlertComponent = (
     <div class="alert alert-danger" role="alert">
-      Une erreur s'est produite, veuillez communiquer avec le coordonateur des stage: sylvain.labranche@cmontmorency.qc.ca
+      Une erreur s'est produite, veuillez communiquer avec le coordonateur des
+      stage: sylvain.labranche@cmontmorency.qc.ca
     </div>
   );
   const studentCreatedAlertComponent = (

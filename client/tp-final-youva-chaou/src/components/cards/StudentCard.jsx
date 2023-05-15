@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -9,14 +9,13 @@ function StudentCard(props) {
   }
 
   function autoRegisterToInternship(internshipId) {
-    props.registerStudentToInternship(props.studentId, internshipId, () => {
-      setRegisteredInternshipsList([
-        ...registeredIntershipsList,
-        props.internshipsList.find((internship) => {
-          return internship._id === internshipId;
-        }),
-      ]);
-    });
+    setRegisteredInternshipsList([
+      ...registeredIntershipsList,
+      props.internshipsList.find((internship) => {
+        return internship._id === internshipId;
+      })._id,
+    ]);
+    props.registerStudentToInternship(props.studentId, internshipId);
   }
 
   const [registeredIntershipsList, setRegisteredInternshipsList] = useState(

@@ -7,7 +7,7 @@ function FAQPage() {
     <div className="card">
       <div className="card-header">
         <h5> Foire aux questions - FAQ</h5>
-       </div>
+      </div>
       <div className="card-body">
         <div className="accordion accordion-flush" id="accordionFlushExample">
           <div className="accordion-item">

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -50,9 +49,9 @@ function InternshipsProceduresStudents() {
             À l'hiver Pour comprendre le fonctionnement général des projets de
             fin d'études (stages) je vous invite à consulter les différentes
             sections du site Web dans le menu de droite. Lisez ce document
-            concernant 
+            concernant
             <a href="../documents/Code_ethique_presentation_stages.pdf">
-               l'éthique et les dates (pour Hiver 2019)
+              l'éthique et les dates (pour Hiver 2019)
             </a>
             <p style={{ textAlign: "left" }}>
               Plus de détails pour les
@@ -68,8 +67,10 @@ function InternshipsProceduresStudents() {
             </li>
             <li class="list-group-item">profil est soit réseaux, soit prog</li>
             <li class="list-group-item">#DA est votre numéro d'admission</li>
-            <li class="list-group-item">nom est votre nom par exemple: Stages réseaux 201014109 Joe Larue - contenu CV</li>
-           
+            <li class="list-group-item">
+              nom est votre nom par exemple: Stages réseaux 201014109 Joe Larue
+              - contenu CV
+            </li>
             <li class="list-group-item">
               N'oubliez pas d'inscrire la raison du message (après le tiret).
             </li>

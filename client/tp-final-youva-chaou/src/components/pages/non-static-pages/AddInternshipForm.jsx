@@ -61,16 +61,6 @@ function AddInternshipForm() {
         console.log(res);
         setSpinnerClass(null);
         setAlertPlaceHolder(internshipCreatedAlertComponent);
-        const emailBody =
-          "Compagnie: " +
-          companyName +
-          "\n Contact du stage: \n" +
-          contactFullName +
-          "\n" +
-          contactEmail +
-          "\n" +
-          contactNumber;
-        //sendEmail("youvachaou1234@gmail.com", "Un nouveau stage a été ajouté");
       })
       .catch((err) => {
         console.log(err);

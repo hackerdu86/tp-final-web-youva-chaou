@@ -1,6 +1,4 @@
 function MainMenuPage() {
-
-
   return (
     <div className="card text-center mx-auto" style={{ width: "50rem" }}>
       <img
