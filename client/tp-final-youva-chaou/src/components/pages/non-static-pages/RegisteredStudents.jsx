@@ -26,6 +26,17 @@ function RegisteredStudents() {
       });
   }
 
+  function registerStudentToInternship(studentId, internshipId) {
+    apiStudentManager
+      .registerStudentEntry(studentId, internshipId)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   const [studentsList, setStudentsList] = useState([]);
   const [contentPlaceHolder, setContentPlaceHolder] = useState(
     <CustomLoader />
@@ -84,6 +95,7 @@ function RegisteredStudents() {
                 primaryStyle={primaryStyle}
                 deleteStudent={deleteStudent}
                 internshipsList={internshipsList}
+                registerStudentToInternship={registerStudentToInternship}
               />
             );
           })}

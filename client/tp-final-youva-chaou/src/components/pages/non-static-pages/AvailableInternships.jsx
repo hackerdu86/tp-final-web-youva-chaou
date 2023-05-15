@@ -149,7 +149,7 @@ function AvailableInternships() {
                 contactFullName={internship.contactFullName}
                 contactEmail={internship.contactEmail}
                 contactNumber={internship.contactNumber}
-                description={internship.description}
+                description={internship.internshipDescription}
                 internshipType={internship.internshipType}
                 availablePositions={internship.availablePositions}
                 hourWage={internship.internshipHourWage}

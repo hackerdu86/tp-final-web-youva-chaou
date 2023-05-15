@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -6,6 +7,21 @@ function StudentCard(props) {
   function autoDestroy() {
     props.deleteStudent(props.studentId);
   }
+
+  function autoRegisterToInternship(internshipId) {
+    props.registerStudentToInternship(props.studentId, internshipId, () => {
+      setRegisteredInternshipsList([
+        ...registeredIntershipsList,
+        props.internshipsList.find((internship) => {
+          return internship._id === internshipId;
+        }),
+      ]);
+    });
+  }
+
+  const [registeredIntershipsList, setRegisteredInternshipsList] = useState(
+    props.registeredInterships
+  );
 
   return (
     <div
@@ -18,11 +34,7 @@ function StudentCard(props) {
       <div class="card-body">
         <h6 class="card-title">Courriel: {props.email}</h6>
         <h6 class="card-title">Profil: {props.profil}</h6>
-        <h6 class="card-title">
-          Stages inscrits: {props.registeredInterships}
-        </h6>
-
-        <div class="dropdown">
+        <span class="dropdown">
           <button
             class="btn btn-primary dropdown-toggle"
             type="button"
@@ -37,15 +49,21 @@ function StudentCard(props) {
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {props.internshipsList
               .filter((internship) => {
-                return !props.registeredInterships.includes(internship._id);
+                return !registeredIntershipsList.includes(internship._id);
               })
               .map((notRegisteredInternships) => {
+                const internshipId = notRegisteredInternships.id;
                 return (
-                  <li class={"dropdown-item"}>
+                  <li
+                    class={"dropdown-item"}
+                    onClick={() => {
+                      autoRegisterToInternship(internshipId);
+                    }}
+                  >
                     {" "}
                     {notRegisteredInternships.companyName +
                       ": (" +
-                      notRegisteredInternships.id +
+                      internshipId +
                       ")"}
                   </li>
                 );
@@ -55,7 +73,7 @@ function StudentCard(props) {
             </li>
             {props.internshipsList
               .filter((internship) => {
-                return props.registeredInterships.includes(internship._id);
+                return registeredIntershipsList.includes(internship._id);
               })
               .map((alreadyRegisteredInternships) => {
                 return (
@@ -69,7 +87,7 @@ function StudentCard(props) {
                 );
               })}
           </ul>
-        </div>
+        </span>
         <button
           class="btn btn-danger"
           style={{ float: "right" }}
