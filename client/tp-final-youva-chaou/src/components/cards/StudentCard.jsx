@@ -10,34 +10,66 @@ function StudentCard(props) {
   return (
     <div
       class={
-        "card " +
-        (!props.primaryStyle ? "text-bg-light" : "text-bg-secondary")
+        "card " + (!props.primaryStyle ? "text-bg-light" : "text-bg-secondary")
       }
       style={{ maxWidth: "90%", margin: "1rem auto" }}
     >
-      <h5 class="card-header">
-        Nom de l'étudiant: {props.fullName}
-      </h5>
+      <h5 class="card-header">Nom de l'étudiant: {props.fullName}</h5>
       <div class="card-body">
         <h6 class="card-title">Courriel: {props.email}</h6>
         <h6 class="card-title">Profil: {props.profil}</h6>
         <h6 class="card-title">
           Stages inscrits: {props.registeredInterships}
         </h6>
-        <button class="btn btn-primary">Inscrire</button>
-        <span class="dropdown">
-          <a
-            class="btn btn-secondary dropdown-toggle"
-            href="#"
-            role="button"
+
+        <div class="dropdown">
+          <button
+            class="btn btn-primary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Stages
-          </a>
+            Inscrire à un stage
+            <span class="caret"></span>
+          </button>
 
-          <ul class="dropdown-menu"></ul>
-        </span>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {props.internshipsList
+              .filter((internship) => {
+                return !props.registeredInterships.includes(internship._id);
+              })
+              .map((notRegisteredInternships) => {
+                return (
+                  <li class={"dropdown-item"}>
+                    {" "}
+                    {notRegisteredInternships.companyName +
+                      ": (" +
+                      notRegisteredInternships.id +
+                      ")"}
+                  </li>
+                );
+              })}
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            {props.internshipsList
+              .filter((internship) => {
+                return props.registeredInterships.includes(internship._id);
+              })
+              .map((alreadyRegisteredInternships) => {
+                return (
+                  <li class={"dropdown-item disabled"}>
+                    {" "}
+                    {alreadyRegisteredInternships.companyName +
+                      ": (" +
+                      alreadyRegisteredInternships.id +
+                      ") | Déjà inscrit"}
+                  </li>
+                );
+              })}
+          </ul>
+        </div>
         <button
           class="btn btn-danger"
           style={{ float: "right" }}

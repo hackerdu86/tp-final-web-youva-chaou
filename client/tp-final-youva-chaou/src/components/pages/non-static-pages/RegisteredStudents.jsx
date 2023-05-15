@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import apiStudentManager from "../../../utils/api-student-manager";
+import apiInternshipManager from "../../../utils/api-internship-manager";
 import StudentCard from "../../cards/StudentCard";
 import CustomLoader from "../../animated-components/CustomLoader";
 
@@ -29,6 +30,8 @@ function RegisteredStudents() {
   const [contentPlaceHolder, setContentPlaceHolder] = useState(
     <CustomLoader />
   );
+  const [internshipsList, setIntershipList] = useState([]);
+
   useEffect(() => {
     apiStudentManager
       .getStudentsEntries()
@@ -36,6 +39,16 @@ function RegisteredStudents() {
         console.log(res);
         setContentPlaceHolder(null);
         setStudentsList(res.data.students);
+        apiInternshipManager
+          .getInternshipsEntries()
+          .then((res) => {
+            console.log(res);
+            setIntershipList(res.data.internships);
+          })
+          .catch((err) => {
+            console.log(err);
+            setIntershipList(["Une erreur est survenu"]);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -70,6 +83,7 @@ function RegisteredStudents() {
                 registeredInterships={student.registeredInterships}
                 primaryStyle={primaryStyle}
                 deleteStudent={deleteStudent}
+                internshipsList={internshipsList}
               />
             );
           })}

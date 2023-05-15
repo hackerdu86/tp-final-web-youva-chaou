@@ -1,10 +1,12 @@
 function MainMenuPage() {
+
+
   return (
     <div className="card text-center mx-auto" style={{ width: "50rem" }}>
       <img
         src={require("../../../images/montmorency-area.png")}
         className="card-img-top"
-        alt="image du campus de montmorency"
+        alt="Campus de montmorency"
       />
       <div className="card-body">
         <h5 className="card-title">Édition 2023</h5>
