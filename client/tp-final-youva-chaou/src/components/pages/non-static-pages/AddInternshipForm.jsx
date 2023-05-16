@@ -2,7 +2,7 @@ import React from "react";
 import { useState, createRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-//import sendEmail from "../../../utils/email-sender";
+import sendEmail from "../../../utils/email-sender";
 import apiInternshipManager from "../../../utils/api-internship-manager";
 
 function AddInternshipForm() {
@@ -61,6 +61,22 @@ function AddInternshipForm() {
         console.log(res);
         setSpinnerClass(null);
         setAlertPlaceHolder(internshipCreatedAlertComponent);
+        const emailBody =
+          "Entreprise: " +
+          companyName +
+          "\nContact du stage:\n" +
+          contactFullName +
+          "\n" +
+          contactEmail +
+          "\n" +
+          contactNumber;
+        sendEmail("youvachaou1234@gmail.com", emailBody)
+          .then((res) => {
+            console.log("Email results ->", res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
